@@ -14,7 +14,6 @@ powershell -ExecutionPolicy bypass
 
 Once the Powershell shell is running, and you're `cd`'d into the correct directory, run stuff like this: `.\hello_world.ps1`
 
-
 ## Dev Environment Setup
 
 1. Download and install git: `/home/ndr/Desktop/dev/git/snooze/`

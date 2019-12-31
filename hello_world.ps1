@@ -12,8 +12,14 @@ $csv_lines = @() #@("Dir,LibreOffice_Hyperlink,HTML_Link,Simple_Link")
 #        %{$_ -replace "$", "`">link<a>"}
 #    $csv_lines += "$dir,=HYPERLINK(`"$dir`"),$html_link,file://$dir"
 #}
-#foreach ($dir in $Directories){
-$dir_object = New-Object -Type my_object_type
+class dir_object
+{
+    [ValidateNotNullOrEmpty()][string]$Dir
+    [ValidateNotNullOrEmpty()][string]$LibreOffice_Hyperlink
+    [ValidateNotNullOrEmpty()][string]$HTML_Link
+    [ValidateNotNullOrEmpty()][string]$Simple_Link
+}
+
 $Directories | ForEach-Object {
     #$dir = $dir | %{$_ -replace "\\", "/"}
     $dir = %{$_ -replace "\\", "/"}
@@ -24,7 +30,7 @@ $Directories | ForEach-Object {
         Dir = "$dir"
         LibreOffice_Hyperlink = "=HYPERLINK(`"$dir`")"
         HTML_Link = "$html_link"
-        SimpleLink = "file://$dir"
+        Simple_Link = "file://$dir"
     }
 }
 $csv_lines | Export-Csv -Path ./my_links.csv -NoTypeInformation

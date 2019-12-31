@@ -9,5 +9,5 @@ foreach ($dir in $Directories){
         %{$_ -replace "$", "`">link<a>"}
     $csv_lines += "$dir,=HYPERLINK(`"$dir`"),$html_link,file://$dir"
 }
-Export-Csv -InputObject $csv_lines -Path ./my_links.csv
+$csv_lines | Export-Csv -Path ./my_links.csv
 "Wrote ./my_links.csv -> Now `"Import CSV`" in Excel"

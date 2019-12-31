@@ -21,7 +21,7 @@ $Directories | ForEach-Object {
         %{$_ -replace "$", "`">link<a>"}
     $csv_lines += [dir_object]@{
         Dir = "$dir"
-        LibreOffice_Hyperlink = "=HYPERLINK(`"$dir`", "Link")"
+        LibreOffice_Hyperlink = "=HYPERLINK(`"$dir`", `"Link`")"
         HTML_Link = "$html_link"
         Simple_Link = "file://$dir"
     }

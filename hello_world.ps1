@@ -6,14 +6,14 @@ $Directories = Get-ChildItem -Path ./ -Name -Recurse
 #Write-Output -InputObject $Directories | `
 #    %{$_ -replace "\\", "/"} | `
 #    %{$_ -replace "^", "<a href=\"file://>"} |\
-foreach ($tdir in $Directories){
-    $link = $tdir |`
+foreach ($dir in $Directories){
+    $html_link = $dir |`
         %{$_ -replace "\\", "/"}|`
         %{$_ -replace "^", "<a href=`"file://"}|`
         %{$_ -replace "$", "`">link<a>"}
-    $simple_link = $tdir |`
+    $simple_link = $dir |`
         %{$_ -replace "\\", "/"}|`
         %{$_ -replace "^", "file://"}
-    "$tdir,$link,$simple_link"
+    "$dir,$html_link,$simple_link,=HYPERLINK(`"$dir`")"
 }
 

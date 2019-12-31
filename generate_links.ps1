@@ -3,13 +3,14 @@
 # Needs to handle:
 #   Excel hyperlinks.
 #   Files with spaces in the name.
+$target_file = "./my_links.csv"
 $Directories = Get-ChildItem -Path ./ -Name -Recurse
 $csv_lines = @()
 
 class dir_object
 {
     [ValidateNotNullOrEmpty()][string]$Dir
-    [ValidateNotNullOrEmpty()][string]$LibreOffice_Hyperlink
+    [ValidateNotNullOrEmpty()][string]$Excel_Hyperlink
     [ValidateNotNullOrEmpty()][string]$HTML_Link
     [ValidateNotNullOrEmpty()][string]$Simple_Link
 }
@@ -21,10 +22,10 @@ $Directories | ForEach-Object {
         %{$_ -replace "$", "`">link<a>"}
     $csv_lines += [dir_object]@{
         Dir = "$dir"
-        LibreOffice_Hyperlink = "=HYPERLINK(`"$dir`", `"Link`")"
+        Excel_Hyperlink = "=HYPERLINK(`"$dir`", `"Link`")"
         HTML_Link = "$html_link"
         Simple_Link = "file://$dir"
     }
 }
-$csv_lines | Export-Csv -Path ./my_links.csv -NoTypeInformation
-"Wrote ./my_links.csv -> Now `"Import CSV`" in Excel"
+$csv_lines | Export-Csv -Path $target_file -NoTypeInformation
+"Wrote $target_file -> Now `"Import CSV`" in Excel"

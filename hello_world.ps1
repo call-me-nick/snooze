@@ -9,7 +9,7 @@ foreach ($dir in $Directories){
         %{$_ -replace "$", "`">link<a>"}
     $csv_lines += "$dir,=HYPERLINK(`"$dir`"),$html_link,file://$dir"
 }
-ExportCsv `
+Export-Csv `
     -InputObject $csv_lines `
     -Property Dir,LibreOffice_Hyperlink,HTML_Link,Simple_Link `
     -Path ./my_links.csv

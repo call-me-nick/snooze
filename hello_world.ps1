@@ -13,3 +13,5 @@ ExportCsv `
     -InputObject $csv_lines `
     -Property Dir,LibreOffice_Hyperlink,HTML_Link,Simple_Link `
     -Path ./my_links.csv
+"Wrote ./my_links.csv"
+"Use `"Import CSV`" in Excel"

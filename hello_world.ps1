@@ -12,8 +12,10 @@ $csv_lines = @() #@("Dir,LibreOffice_Hyperlink,HTML_Link,Simple_Link")
 #        %{$_ -replace "$", "`">link<a>"}
 #    $csv_lines += "$dir,=HYPERLINK(`"$dir`"),$html_link,file://$dir"
 #}
-foreach ($dir in $Directories){
-    $dir = $dir | %{$_ -replace "\\", "/"}
+#foreach ($dir in $Directories){
+$Directories | ForEach-Object {
+    #$dir = $dir | %{$_ -replace "\\", "/"}
+    $dir = %{$_ -replace "\\", "/"}
     $html_link = $dir |`
         %{$_ -replace "^", "<a href=`"file://"}|`
         %{$_ -replace "$", "`">link<a>"}

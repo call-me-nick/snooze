@@ -13,7 +13,7 @@ foreach ($tdir in $Directories){
         %{$_ -replace "$", "`">link<a>"}
     $simple_link = $tdir |`
         %{$_ -replace "\\", "/"}|`
-        %{$_ -replace "^", "file://"}|`
+        %{$_ -replace "^", "file://"}
     "$tdir,$link,$simple_link"
 }
 

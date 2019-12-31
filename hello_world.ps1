@@ -1,19 +1,15 @@
-#Write-Host 'Hello, world!'
-#Write-Host 'This is the second line.'
-#$Directories = Get-ChildItem -Path C:\users\nickr\Desktop -Directory -Recurse
-#$Directories = Get-ChildItem -Path ../ -Directory -Recurse
+# Build a CSV from a list of directories.
+#  With hyperlinks.
 $Directories = Get-ChildItem -Path ./ -Name -Recurse
-#Write-Output -InputObject $Directories | `
-#    %{$_ -replace "\\", "/"} | `
-#    %{$_ -replace "^", "<a href=\"file://>"} |\
+$csv_lines = @()
 foreach ($dir in $Directories){
+    $dir = $dir | %{$_ -replace "\\", "/"}
     $html_link = $dir |`
-        %{$_ -replace "\\", "/"}|`
         %{$_ -replace "^", "<a href=`"file://"}|`
         %{$_ -replace "$", "`">link<a>"}
-    $simple_link = $dir |`
-        %{$_ -replace "\\", "/"}|`
-        %{$_ -replace "^", "file://"}
-    "$dir,$html_link,$simple_link,=HYPERLINK(`"$dir`")"
+    $csv_lines += "$dir,=HYPERLINK(`"$dir`"),$html_link,file://$dir"
 }
-
+ExportCsv `
+    -InputObject $csv_lines `
+    -Property Dir,LibreOffice_Hyperlink,HTML_Link,Simple_Link `
+    -Path ./my_links.csv

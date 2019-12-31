@@ -21,8 +21,7 @@ Once the Powershell shell is running, and you're `cd`'d into the correct directo
 1. In that shell:
 
 ```shell
-cd <to your home directory>
-cd Desktop
+cd $HOME\Desktop
 mkdir git
 cd git
 git clone https://github.com/call-me-nick/snooze.git

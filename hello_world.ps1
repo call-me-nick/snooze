@@ -24,5 +24,5 @@ foreach ($dir in $Directories){
         SimpleLink = "file://$dir"
     }
 }
-$csv_lines  Export-Csv -Path ./my_links.csv -NoTypeInformation
+$csv_lines | Export-Csv -Path ./my_links.csv -NoTypeInformation
 "Wrote ./my_links.csv -> Now `"Import CSV`" in Excel"

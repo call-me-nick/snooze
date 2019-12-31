@@ -13,6 +13,7 @@ $csv_lines = @() #@("Dir,LibreOffice_Hyperlink,HTML_Link,Simple_Link")
 #    $csv_lines += "$dir,=HYPERLINK(`"$dir`"),$html_link,file://$dir"
 #}
 #foreach ($dir in $Directories){
+$dir_object = New-Object -NoTypeInformation
 $Directories | ForEach-Object {
     #$dir = $dir | %{$_ -replace "\\", "/"}
     $dir = %{$_ -replace "\\", "/"}

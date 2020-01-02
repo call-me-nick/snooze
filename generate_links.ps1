@@ -21,7 +21,7 @@ class dir_object
 
 $Directories | ForEach-Object {
     $dir = %{$_ -replace "\\", "/"}
-    if $exclude_files.Contains($dir){
+    if($exclude_files.Contains($dir)){
         "Skipping: $dir"
         continue
     } else {

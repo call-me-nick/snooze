@@ -4,7 +4,7 @@
 #   Excel hyperlinks.
 #   Files with spaces in the name.
 #   Only files, no directories.
-$target_file = "./my_links.csv"
+$target_file = "my_links.csv"
 $exclude_files = @(
     "$target_file"
     "Makefile",

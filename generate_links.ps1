@@ -3,16 +3,15 @@
 # Needs to handle:
 #   Excel hyperlinks.
 #   Files with spaces in the name.
+#   Only files, no directories.
 $target_file = "./my_links.csv"
-$Directories = Get-ChildItem -Path ./ -Name -Recurse
+$Directories = Get-ChildItem -Path ./ -File -Name -Recurse
 $csv_lines = @()
 
 class dir_object
 {
     [ValidateNotNullOrEmpty()][string]$Dir
     [ValidateNotNullOrEmpty()][string]$Excel_Hyperlink
-    [ValidateNotNullOrEmpty()][string]$HTML_Link
-    [ValidateNotNullOrEmpty()][string]$Simple_Link
 }
 
 $Directories | ForEach-Object {
@@ -23,8 +22,6 @@ $Directories | ForEach-Object {
     $csv_lines += [dir_object]@{
         Dir = "$dir"
         Excel_Hyperlink = "=HYPERLINK(`"$dir`", `"Link`")"
-        HTML_Link = "$html_link"
-        Simple_Link = "file://$dir"
     }
 }
 $csv_lines | Export-Csv -Path $target_file -NoTypeInformation

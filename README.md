@@ -2,14 +2,25 @@
 
 Powershell experimentation on Windows.
 
+## MISC
+
+```cmd
+# download nuget.exe
+./nuget.exe install itext7 -Version j7.1.9 # will install in the current directory.
+
+
+```
+
 ## How to run `generate_links.ps1`
 
 The following instructions will generate a file called `my_links.csv` in the current working directory (as set in the instructions below).
 
 1. Open a PowerShell window, as below.
-1. In that window, use the `cd` command to change your current working directory
+1. In that window, use the `cd <drive letter` command to change your current working directory
+1. Now `cd <to the directory where the PDF files are>`
 to the base directory containing all files that you want indexed.
-1. Run the `generate_links.ps1` command using the **absolute path** to the command. For example: `c:/users/theresa/Desktop/snooze/generate_links.ps1`
+1. Run the `generate_links.ps1` command using the **absolute path** to the command. For example: `c:/users/TRettinghouse/Desktop/snooze/generate_links.ps1`
+1. You have generated a file that can be opened with Excel. Do that.
 
 ## How to run Powershell
 

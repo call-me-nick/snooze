@@ -1,5 +1,5 @@
 try {
-    Add-Type -Path "C:\users\nickr\Desktop\git\snooze\iText7.7.1.9\lib\net40\itext.kernel.dll"
+    Add-Type -Path "c:\users\nickr\Desktop\git\snooze\itext7.7.1.9\lib\net40\itext.kernel.dll"
 }
 catch [System.Reflection.ReflectionTypeLoadException] {
     Write-Host "Message: $($_.Exception.Message)"

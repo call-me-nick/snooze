@@ -1,4 +1,4 @@
-Add-Type -Path "./itext7.7.1.9/lib/net40/itext.kernel.dll"
+Add-Type -Path "iText7.7.1.9\lib\net40\itext.kernel.dll"
 
 $reader = [iText.text.pdf.PdfReader]::new('test.pdf')
 

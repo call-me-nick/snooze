@@ -4,8 +4,13 @@
 #   Excel hyperlinks.
 #   Files with spaces in the name.
 #   Only files, no directories.
+$exclude_files = @(
+    "Makefile",
+    "generate_links.ps1",
+    "README.md"
+)
 $target_file = "./my_links.csv"
-$Directories = Get-ChildItem -Path ./ -File -Name -Recurse -Exclude "$target_file"
+$Directories = Get-ChildItem -Path ./ -File -Name -Recurse
 $csv_lines = @()
 
 class dir_object
@@ -16,7 +21,12 @@ class dir_object
 
 $Directories | ForEach-Object {
     $dir = %{$_ -replace "\\", "/"}
-    "Processing: $dir"
+    if $exclude_files.Contains($dir){
+        "Skipping: $dir"
+        continue
+    } else {
+        "Processing: $dir"
+    }
     $html_link = $dir |`
         %{$_ -replace "^", "<a href=`"file://"}|`
         %{$_ -replace "$", "`">link<a>"}

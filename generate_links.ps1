@@ -4,12 +4,13 @@
 #   Excel hyperlinks.
 #   Files with spaces in the name.
 #   Only files, no directories.
+$target_file = "./my_links.csv"
 $exclude_files = @(
+    "$target_file"
     "Makefile",
     "generate_links.ps1",
     "README.md"
 )
-$target_file = "./my_links.csv"
 $Directories = Get-ChildItem -Path ./ -File -Name -Recurse
 $csv_lines = @()
 

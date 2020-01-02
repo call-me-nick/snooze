@@ -35,6 +35,6 @@ $Directories | ForEach-Object {
         }
     }
 }
-"Done..."
+"Done."
 $csv_lines | Export-Csv -Path $target_file -NoTypeInformation
-"Wrote $target_file -> Now `"Import CSV`" in Excel"
+"Wrote: $target_file (This file can be opened with Excel.)"

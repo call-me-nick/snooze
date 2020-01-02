@@ -1,5 +1,6 @@
 try {
-    Add-Type -Path "c:\users\nickr\Desktop\git\snooze\itext7.7.1.9\lib\net40\itext.kernel.dll"
+    Add-Type -Path ".\itext7.7.1.9\lib\net40\itext.kernel.dll"
+    Add-Type -Path ".\Portable.BouncyCastle.1.8.1.3\lib\net40\BouncyCastle.Crypto.dll"
 }
 catch [System.Reflection.ReflectionTypeLoadException] {
     Write-Host "Message: $($_.Exception.Message)"

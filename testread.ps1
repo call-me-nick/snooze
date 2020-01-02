@@ -9,7 +9,7 @@ catch [System.Reflection.ReflectionTypeLoadException] {
     Write-Host "LoaderExceptions: $($_.Exception.LoaderExceptions)"
 }
 
-$reader = [iText.text.pdf.PdfReader]::new('test.pdf')
+$reader = [itext.text.pdf.PdfReader]::new('test.pdf')
 
 for ($page = 1; $page -le $reader.NumberOfPages; $page++) {
     $lines = [char[]]$reader.GetPageContent($page) -join "" -split "`n"

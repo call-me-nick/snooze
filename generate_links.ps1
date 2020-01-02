@@ -5,7 +5,7 @@
 #   Files with spaces in the name.
 #   Only files, no directories.
 $target_file = "./my_links.csv"
-$Directories = Get-ChildItem -Path ./ -File -Name -Recurse
+$Directories = Get-ChildItem -Path ./ -File -Name -Recurse -Exclude '$target_file'
 $csv_lines = @()
 
 class dir_object
@@ -16,6 +16,7 @@ class dir_object
 
 $Directories | ForEach-Object {
     $dir = %{$_ -replace "\\", "/"}
+    "Processing: $dir"
     $html_link = $dir |`
         %{$_ -replace "^", "<a href=`"file://"}|`
         %{$_ -replace "$", "`">link<a>"}
@@ -24,5 +25,6 @@ $Directories | ForEach-Object {
         Excel_Hyperlink = "=HYPERLINK(`"$dir`", `"Link`")"
     }
 }
+"Done..."
 $csv_lines | Export-Csv -Path $target_file -NoTypeInformation
 "Wrote $target_file -> Now `"Import CSV`" in Excel"

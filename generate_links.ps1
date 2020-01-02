@@ -5,7 +5,7 @@
 #   Files with spaces in the name.
 #   Only files, no directories.
 $target_file = "./my_links.csv"
-$Directories = Get-ChildItem -Path ./ -File -Name -Recurse -Exclude '$target_file'
+$Directories = Get-ChildItem -Path ./ -File -Name -Recurse -Exclude "$target_file"
 $csv_lines = @()
 
 class dir_object

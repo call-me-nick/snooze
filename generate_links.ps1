@@ -23,16 +23,15 @@ $Directories | ForEach-Object {
     $dir = %{$_ -replace "\\", "/"}
     if($exclude_files.Contains($dir)){
         "Skipping: $dir"
-        continue
     } else {
         "Processing: $dir"
-    }
-    $html_link = $dir |`
-        %{$_ -replace "^", "<a href=`"file://"}|`
-        %{$_ -replace "$", "`">link<a>"}
-    $csv_lines += [dir_object]@{
-        Dir = "$dir"
-        Excel_Hyperlink = "=HYPERLINK(`"$dir`", `"Link`")"
+        $html_link = $dir |`
+            %{$_ -replace "^", "<a href=`"file://"}|`
+            %{$_ -replace "$", "`">link<a>"}
+        $csv_lines += [dir_object]@{
+            Dir = "$dir"
+            Excel_Hyperlink = "=HYPERLINK(`"$dir`", `"Link`")"
+        }
     }
 }
 "Done..."
